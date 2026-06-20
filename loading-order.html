@@ -157,7 +157,6 @@ footer{font-size:11px;color:var(--muted);text-align:center;padding:12px}
 
 <div class="actions">
 <button class="ghost" onclick="clearForm()"><span data-i18n="clear">Temizle</span></button>
-<button class="dark" onclick="downloadWord()"><span data-i18n="exportWord">Word Dışa Aktar</span></button>
 <button class="primary" onclick="window.print()"><span data-i18n="pdfPrint">PDF / Yazdır</span></button>
 </div>
 <footer>Tatlısu Mah. Erkaya Sok. No:1 Yüksel Ofis Ümraniye / İstanbul · Tel: 0216 415 3414 · finans@trans-map.com · www.trans-map.com</footer>
@@ -174,7 +173,7 @@ const dict = {
   supplierCompany:"Tedarikçi Firma", authorizedPerson:"Yetkili Kişi", truckPlate:"Çekici Plakası", trailerPlate:"Dorse Plakası", driverName:"Sürücü Adı Soyadı", driverPhone:"Sürücü Telefonu",
   vehicleNotice:"Bu alanlar sipariş gönderilirken boş bırakılabilir. Araç ve sürücü belli olduğunda taşıyıcı tarafından doldurulabilir.",
   equipmentNote:"Ekipman / Özel Not / Talimat", agreedFreight:"Anlaşılan Navlun", currency:"Para Birimi", paymentTerm:"Ödeme Vadesi", invoiceEmail:"Fatura E-posta", invoiceRef:"Fatura Referansı",
-  addLoading:"+ Yükleme Ekle", addDelivery:"+ Teslimat Ekle", addCargo:"+ Yük Detayı Ekle", clear:"Temizle", exportWord:"Word Dışa Aktar", pdfPrint:"PDF / Yazdır",
+  addLoading:"+ Yükleme Ekle", addDelivery:"+ Teslimat Ekle", addCargo:"+ Yük Detayı Ekle", clear:"Temizle", pdfPrint:"PDF / Yazdır",
   confirmationDate:"Onay Tarihi", authorizedName:"Yetkili Ad Soyad", stampSignature:"Kaşe / İmza", confirmedEmail:"E-posta ile Onaylandı", confirmedWhatsapp:"WhatsApp ile Onaylandı", confirmedSigned:"İmzalı Olarak Onaylandı",
   loadingItem:"Yükleme", deliveryItem:"Teslimat", cargoItem:"Yük", delete:"Sil", company:"Firma", address:"Adres", postalCode:"Posta Kodu", city:"Şehir", country:"Ülke", referenceNo:"Referans No", contactPhone:"İrtibat Kişisi / Telefon", time:"Saat",
   commodity:"Mal Cinsi", packaging:"Ambalaj", packagesPallets:"Kap / Palet", grossKg:"Brüt KG", m3:"M³", ldm:"LDM", adrUn:"ADR / UN No", specialInstruction:"Özel Talimat"
@@ -187,7 +186,7 @@ const dict = {
   supplierCompany:"Carrier Company", authorizedPerson:"Authorized Person", truckPlate:"Truck Plate", trailerPlate:"Trailer Plate", driverName:"Driver Full Name", driverPhone:"Driver Phone",
   vehicleNotice:"These fields may be left blank when the order is sent. The carrier may complete them once vehicle and driver details are available.",
   equipmentNote:"Equipment / Special Note / Instruction", agreedFreight:"Agreed Freight", currency:"Currency", paymentTerm:"Payment Term", invoiceEmail:"Invoice E-mail", invoiceRef:"Invoice Reference",
-  addLoading:"+ Add Loading", addDelivery:"+ Add Delivery", addCargo:"+ Add Cargo", clear:"Clear", exportWord:"Export Word", pdfPrint:"PDF / Print",
+  addLoading:"+ Add Loading", addDelivery:"+ Add Delivery", addCargo:"+ Add Cargo", clear:"Clear", pdfPrint:"PDF / Print",
   confirmationDate:"Confirmation Date", authorizedName:"Authorized Name", stampSignature:"Stamp / Signature", confirmedEmail:"Confirmed by E-mail", confirmedWhatsapp:"Confirmed by WhatsApp", confirmedSigned:"Confirmed Signed",
   loadingItem:"Loading", deliveryItem:"Delivery", cargoItem:"Cargo", delete:"Delete", company:"Company", address:"Address", postalCode:"Postal Code", city:"City", country:"Country", referenceNo:"Reference No", contactPhone:"Contact Person / Phone", time:"Time",
   commodity:"Commodity", packaging:"Packaging", packagesPallets:"Packages / Pallets", grossKg:"Gross KG", m3:"M³", ldm:"LDM", adrUn:"ADR / UN No", specialInstruction:"Special Instruction"
@@ -200,7 +199,7 @@ const dict = {
   supplierCompany:"Frachtführer", authorizedPerson:"Ansprechpartner", truckPlate:"Zugmaschinenkennzeichen", trailerPlate:"Aufliegerkennzeichen", driverName:"Name des Fahrers", driverPhone:"Telefon des Fahrers",
   vehicleNotice:"Diese Felder können beim Versand des Auftrags leer bleiben. Der Frachtführer kann sie ausfüllen, sobald Fahrzeug- und Fahrerdaten verfügbar sind.",
   equipmentNote:"Ausrüstung / Besondere Hinweise / Anweisung", agreedFreight:"Vereinbarte Fracht", currency:"Währung", paymentTerm:"Zahlungsziel", invoiceEmail:"Rechnungs-E-Mail", invoiceRef:"Rechnungsreferenz",
-  addLoading:"+ Ladestelle hinzufügen", addDelivery:"+ Entladestelle hinzufügen", addCargo:"+ Ladung hinzufügen", clear:"Löschen", exportWord:"Word exportieren", pdfPrint:"PDF / Drucken",
+  addLoading:"+ Ladestelle hinzufügen", addDelivery:"+ Entladestelle hinzufügen", addCargo:"+ Ladung hinzufügen", clear:"Löschen", pdfPrint:"PDF / Drucken",
   confirmationDate:"Bestätigungsdatum", authorizedName:"Name des Bevollmächtigten", stampSignature:"Stempel / Unterschrift", confirmedEmail:"Per E-Mail bestätigt", confirmedWhatsapp:"Per WhatsApp bestätigt", confirmedSigned:"Unterschrieben bestätigt",
   loadingItem:"Ladestelle", deliveryItem:"Entladestelle", cargoItem:"Ladung", delete:"Löschen", company:"Firma", address:"Adresse", postalCode:"PLZ", city:"Stadt", country:"Land", referenceNo:"Referenz-Nr.", contactPhone:"Ansprechpartner / Telefon", time:"Uhrzeit",
   commodity:"Ware", packaging:"Verpackung", packagesPallets:"Packstücke / Paletten", grossKg:"Bruttogewicht KG", m3:"M³", ldm:"LDM", adrUn:"ADR / UN-Nr.", specialInstruction:"Besondere Anweisung"
@@ -239,7 +238,7 @@ const termsData = {
   ["7. Evrak Gönderimi","İmzalı CMR, POD ve fatura ödeme işlemleri için Transmap'e gönderilmelidir."],
   ["8. Ödeme","Navlun ödemesi bu taşıma emrinde belirtilen ödeme vadesine göre yapılacaktır."],
   ["9. Müşteri Koruma","Taşıyıcı, Transmap tarafından tanıştırılan müşteri ile doğrudan veya dolaylı ticari ilişki kuramaz."],
-  ["10. Tedarikçi Genel Şartları","Bu Taşıma Emrini kabul eden taşıyıcı, Transmap Tedarikçi Genel Şartları ve Taşıma Koşullarını okuduğunu, anladığını ve kabul ettiğini beyan eder.<br><br><a href=\"https://ugursahinli-blip.github.io/transmap-forms/supplier-terms.html\" target=\"_blank\" style=\"font-weight:700;color:#f36f21;text-decoration:none;\">📄 Transmap Tedarikçi Genel Şartları ve Taşıma Koşulları (Tıklayınız)</a>"],["11. Elektronik Onay","E-posta, WhatsApp veya elektronik onay imza hükmündedir."]
+  ["10. Tedarikçi Genel Şartları","Bu Taşıma Emrini kabul eden taşıyıcı, Transmap Tedarikçi Genel Şartları ve Taşıma Koşullarını okuduğunu, anladığını ve kabul ettiğini beyan eder. Güncel şartlar: https://ugursahinli-blip.github.io/transmap-forms/supplier-terms.html"],["11. Elektronik Onay","E-posta, WhatsApp veya elektronik onay imza hükmündedir."]
  ],
  en:[
   ["1. CMR","This transport order and the related transport are subject to the provisions of the CMR Convention."],
@@ -251,7 +250,7 @@ const termsData = {
   ["7. Document Submission","Signed CMR, POD and invoice must be submitted to Transmap for payment processing."],
   ["8. Payment","Freight payment shall be made according to the payment term stated in this transport order."],
   ["9. Customer Protection","The carrier may not establish direct or indirect commercial relations with customers introduced by Transmap."],
-  ["10. Supplier Terms and Conditions","By accepting this Transport Order, the carrier declares that it has read, understood and accepted the Transmap Supplier Terms & Transport Conditions.<br><br><a href=\"https://ugursahinli-blip.github.io/transmap-forms/supplier-terms.html\" target=\"_blank\" style=\"font-weight:700;color:#f36f21;text-decoration:none;\">📄 Transmap Supplier Terms & Transport Conditions (Click Here)</a>"],["11. Electronic Approval","E-mail, WhatsApp or electronic confirmation shall have the effect of signature."]
+  ["10. Supplier Terms and Conditions","By accepting this Transport Order, the carrier declares that it has read, understood and accepted the Transmap Supplier Terms and Transport Conditions. Current terms: https://ugursahinli-blip.github.io/transmap-forms/supplier-terms.html"],["11. Electronic Approval","E-mail, WhatsApp or electronic confirmation shall have the effect of signature."]
  ],
  de:[
   ["1. CMR","Dieser Transportauftrag und der betreffende Transport unterliegen den Bestimmungen des CMR-Übereinkommens."],
@@ -263,7 +262,7 @@ const termsData = {
   ["7. Dokumentenübermittlung","Unterzeichnete CMR, POD und Rechnung sind zur Zahlungsabwicklung an Transmap zu übermitteln."],
   ["8. Zahlung","Die Frachtzahlung erfolgt gemäß dem in diesem Transportauftrag angegebenen Zahlungsziel."],
   ["9. Kundenschutz","Der Frachtführer darf keine direkte oder indirekte Geschäftsbeziehung mit von Transmap vermittelten Kunden aufnehmen."],
-  ["10. Allgemeine Lieferantenbedingungen","Mit Annahme dieses Transportauftrags erklärt der Frachtführer, die Transmap Lieferanten- und Transportbedingungen gelesen, verstanden und akzeptiert zu haben.<br><br><a href=\"https://ugursahinli-blip.github.io/transmap-forms/supplier-terms.html\" target=\"_blank\" style=\"font-weight:700;color:#f36f21;text-decoration:none;\">📄 Transmap Lieferanten- und Transportbedingungen (Hier klicken)</a>"],["11. Elektronische Bestätigung","E-Mail, WhatsApp oder elektronische Bestätigung gelten als Unterschrift."]
+  ["10. Allgemeine Lieferantenbedingungen","Mit Annahme dieses Transportauftrags erklärt der Frachtführer, die Transmap Allgemeinen Lieferanten- und Transportbedingungen gelesen, verstanden und akzeptiert zu haben. Aktuelle Bedingungen: https://ugursahinli-blip.github.io/transmap-forms/supplier-terms.html"],["11. Elektronische Bestätigung","E-Mail, WhatsApp oder elektronische Bestätigung gelten als Unterschrift."]
  ]
 };
 
@@ -328,15 +327,6 @@ function normalizeText(value, mode){ if(!value) return value; value=value.replac
 document.addEventListener('blur', function(e){ if(e.target.matches('input, textarea')){ const type=e.target.getAttribute('type'); if(type==='date'||type==='time'||type==='checkbox') return; const mode=e.target.dataset.transform || 'upper'; e.target.value=normalizeText(e.target.value, mode); } }, true);
 document.addEventListener('paste', function(e){ if(e.target.matches('input, textarea')){ setTimeout(()=>{ const type=e.target.getAttribute('type'); if(type==='date'||type==='time'||type==='checkbox') return; const mode=e.target.dataset.transform || 'upper'; e.target.value=normalizeText(e.target.value, mode); },0); } });
 function clearForm(){ document.querySelectorAll('input, textarea').forEach(el=>{ if(el.type!=='checkbox') el.value=''; else el.checked=false; }); }
-function downloadWord(){
- const clone=document.querySelector('.page').cloneNode(true);
- clone.querySelectorAll('.actions,.langbar,button').forEach(el=>el.remove());
- clone.querySelectorAll('input').forEach(el=>{ const span=document.createElement('span'); span.textContent=el.type==='checkbox'?(el.checked?'☑':'☐'):(el.value||'________________'); el.replaceWith(span); });
- clone.querySelectorAll('textarea').forEach(el=>{ const div=document.createElement('div'); div.textContent=el.value||'________________'; el.replaceWith(div); });
- clone.querySelectorAll('select').forEach(el=>{ const span=document.createElement('span'); span.textContent=el.options[el.selectedIndex]?.text||'________________'; el.replaceWith(span); });
- const blob=new Blob(['\ufeff','<html><head><meta charset="utf-8"></head><body>'+clone.outerHTML+'</body></html>'],{type:'application/msword;charset=utf-8'});
- const a=document.createElement('a'); a.href=URL.createObjectURL(blob); a.download='Transmap_Loading_Order.doc'; a.click(); URL.revokeObjectURL(a.href);
-}
 addLoading(); addDelivery(); addCargo(); setLang('tr');
 </script>
 </body>

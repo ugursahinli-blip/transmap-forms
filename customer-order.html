@@ -116,7 +116,7 @@ footer{font-size:11px;color:var(--muted);text-align:center;padding:12px}
 </section>
 </main>
 
-<div class="actions"><button class="ghost" onclick="clearForm()" data-i18n="clear">Temizle</button><button class="dark" onclick="downloadWord()" data-i18n="exportWord">Word Dışa Aktar</button><button class="primary" onclick="window.print()" data-i18n="pdfPrint">PDF / Yazdır</button></div>
+<div class="actions"><button class="ghost" onclick="clearForm()" data-i18n="clear">Temizle</button><button class="primary" onclick="window.print()" data-i18n="pdfPrint">PDF / Yazdır</button></div>
 <footer>Tatlısu Mah. Erkaya Sok. No:1 Yüksel Ofis Ümraniye / İstanbul · Tel: 0216 415 3414 · info@trans-map.com · www.trans-map.com</footer>
 </div>
 
@@ -128,7 +128,7 @@ tr:{
  customerCompany:"Müşteri Firma", contactPerson:"Yetkili Kişi", phone:"Telefon", email:"E-posta", service:"Servis", vehicleType:"Araç Tipi", incoterm:"Incoterm", adr:"ADR", equipmentNote:"Ekipman / Özel Not / Talimat",
  loadingCompany:"Yükleme Firma", deliveryCompany:"Teslim Firma", address:"Adres", cityCountry:"Şehir / Ülke", referenceNo:"Referans No", loadingDate:"Yükleme Tarihi", loadingTime:"Yükleme Saati", deliveryDate:"Teslim Tarihi", deliveryTime:"Teslim Saati",
  commodity:"Mal Cinsi", packaging:"Ambalaj", packagesPallets:"Kap / Palet", grossKg:"Brüt KG", m3:"M³", ldm:"LDM", specialNote:"Özel Not / Talimat",
- salesPrice:"Satış Fiyatı", currency:"Para Birimi", paymentTerm:"Ödeme Vadesi", clear:"Temizle", exportWord:"Word Dışa Aktar", pdfPrint:"PDF / Yazdır",
+ salesPrice:"Satış Fiyatı", currency:"Para Birimi", paymentTerm:"Ödeme Vadesi", clear:"Temizle", pdfPrint:"PDF / Yazdır",
  addLoading:"+ Yükleme Bilgileri", addDelivery:"+ Teslimat Bilgileri", addCargo:"+ Yük Detayları", remove:"Sil", loadingItem:"Yükleme", deliveryItem:"Teslimat", cargoItem:"Yük", yes:"Evet", no:"Hayır"
 },
 en:{
@@ -137,7 +137,7 @@ en:{
  customerCompany:"Customer Company", contactPerson:"Contact Person", phone:"Phone", email:"E-mail", service:"Service", vehicleType:"Vehicle Type", incoterm:"Incoterm", adr:"ADR", equipmentNote:"Equipment / Special Note / Instruction",
  loadingCompany:"Loading Company", deliveryCompany:"Delivery Company", address:"Address", cityCountry:"City / Country", referenceNo:"Reference No", loadingDate:"Loading Date", loadingTime:"Loading Time", deliveryDate:"Delivery Date", deliveryTime:"Delivery Time",
  commodity:"Commodity", packaging:"Packaging", packagesPallets:"Packages / Pallets", grossKg:"Gross KG", m3:"M³", ldm:"LDM", specialNote:"Special Note / Instruction",
- salesPrice:"Sales Price", currency:"Currency", paymentTerm:"Payment Term", clear:"Clear", exportWord:"Export Word", pdfPrint:"PDF / Print",
+ salesPrice:"Sales Price", currency:"Currency", paymentTerm:"Payment Term", clear:"Clear", pdfPrint:"PDF / Print",
  addLoading:"+ Loading Details", addDelivery:"+ Delivery Details", addCargo:"+ Cargo Details", remove:"Delete", loadingItem:"Loading", deliveryItem:"Delivery", cargoItem:"Cargo", yes:"Yes", no:"No"
 },
 de:{
@@ -146,7 +146,7 @@ de:{
  customerCompany:"Kundenfirma", contactPerson:"Ansprechpartner", phone:"Telefon", email:"E-Mail", service:"Service", vehicleType:"Fahrzeugtyp", incoterm:"Incoterm", adr:"ADR", equipmentNote:"Ausrüstung / Besondere Hinweise / Anweisung",
  loadingCompany:"Ladefirma", deliveryCompany:"Empfängerfirma", address:"Adresse", cityCountry:"Stadt / Land", referenceNo:"Referenz-Nr.", loadingDate:"Ladedatum", loadingTime:"Ladezeit", deliveryDate:"Lieferdatum", deliveryTime:"Lieferzeit",
  commodity:"Ware", packaging:"Verpackung", packagesPallets:"Packstücke / Paletten", grossKg:"Bruttogewicht KG", m3:"M³", ldm:"LDM", specialNote:"Besondere Hinweise / Anweisung",
- salesPrice:"Verkaufspreis", currency:"Währung", paymentTerm:"Zahlungsziel", clear:"Löschen", exportWord:"Word exportieren", pdfPrint:"PDF / Drucken",
+ salesPrice:"Verkaufspreis", currency:"Währung", paymentTerm:"Zahlungsziel", clear:"Löschen", pdfPrint:"PDF / Drucken",
  addLoading:"+ Ladeinformationen", addDelivery:"+ Entladeinformationen", addCargo:"+ Ladungsdetails", remove:"Löschen", loadingItem:"Ladung", deliveryItem:"Entladung", cargoItem:"Ware", yes:"Ja", no:"Nein"
 }
 };
@@ -289,77 +289,6 @@ document.getElementById('date').valueAsDate = new Date();
 function clearForm(){
   document.querySelectorAll('input, textarea').forEach(el=>{ if(el.id !== 'date') el.value=''; });
 }
-function downloadWord(){
- const clone = document.querySelector('.page').cloneNode(true);
-
- // Dil butonları ve işlem butonları Word çıktısından çıkarılır
- clone.querySelectorAll('.actions,.langbar,button').forEach(el => el.remove());
-
- // Input değerlerini düz metne çevir
- clone.querySelectorAll('input').forEach(el => {
-   const span = document.createElement('span');
-   span.style.whiteSpace = 'pre-wrap';
-   span.style.fontWeight = '600';
-   span.textContent = el.value || '________________';
-   el.replaceWith(span);
- });
-
- // Textarea değerlerini düz metne çevir
- clone.querySelectorAll('textarea').forEach(el => {
-   const div = document.createElement('div');
-   div.style.whiteSpace = 'pre-wrap';
-   div.style.minHeight = '28px';
-   div.style.borderBottom = '1px solid #cccccc';
-   div.textContent = el.value || '________________';
-   el.replaceWith(div);
- });
-
- // Select seçili değerlerini düz metne çevir
- clone.querySelectorAll('select').forEach(el => {
-   const span = document.createElement('span');
-   span.style.fontWeight = '600';
-   span.textContent = el.options[el.selectedIndex]?.text || '________________';
-   el.replaceWith(span);
- });
-
- const exportHtml = `
- <html>
- <head>
-   <meta charset="utf-8">
-   <title>Transmap Müşteri Sipariş Formu</title>
-   <style>
-     body{font-family:Arial,Helvetica,sans-serif;color:#1f2933}
-     .page{width:100%;background:#fff}
-     header{display:block;border-bottom:4px solid #f36f21;padding-bottom:12px;margin-bottom:18px}
-     .logo img{width:300px;max-height:130px;object-fit:contain}
-     .form-title{text-align:left}
-     h1{font-size:18px;margin:8px 0 2px}
-     h2{font-size:15px;border-left:5px solid #f36f21;padding-left:8px;margin-top:18px}
-     h3{font-size:13px;margin-bottom:4px}
-     section{border:1px solid #d9dee7;border-radius:8px;padding:12px;margin-bottom:12px}
-     label{font-size:12px;font-weight:bold;color:#475467}
-     .grid,.row,.row2,.terms-grid{display:block}
-     .field{margin-bottom:8px}
-     .repeat-card{border:1px dashed #d9dee7;border-radius:8px;padding:10px;margin-bottom:10px}
-     .repeat-head{font-weight:bold;margin-bottom:6px}
-     p,li,span,div{font-size:12px;line-height:1.35}
-     footer{font-size:10px;color:#667085;text-align:center;margin-top:16px}
-   </style>
- </head>
- <body>${clone.outerHTML}</body>
- </html>`;
-
- const blob = new Blob(['\ufeff', exportHtml], {type:'application/msword;charset=utf-8'});
- const a = document.createElement('a');
- a.href = URL.createObjectURL(blob);
- const ref = (document.getElementById('formNo')?.value || 'Transmap_Musteri_Siparis_Formu').replace(/[^a-zA-Z0-9_-]/g,'_');
- a.download = ref + '.doc';
- document.body.appendChild(a);
- a.click();
- document.body.removeChild(a);
- URL.revokeObjectURL(a.href);
-}
-
 addLoading(); addDelivery(); addCargo(); setLang('tr');
 </script>
 </body>
